@@ -90,4 +90,8 @@ public class ModelUsuarios {
     public void actualizar() {
 
     }
+    
+     public void actualizar1() {
+
+    }
 }
