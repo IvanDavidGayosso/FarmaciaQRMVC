@@ -91,7 +91,4 @@ public class ModelUsuarios {
 
     }
     
-     public void actualizar1() {
-
-    }
 }
