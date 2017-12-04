@@ -13,113 +13,57 @@ import java.util.logging.Logger;
 public class ModelClientes {
 
     BaseDatos base_datos;
-    ArrayList<String> datos = new ArrayList<String>();
-    private String id_cliente;
-    private String nombre;
-    private String apell_pat;
-    private String apell_mat;
-    private String calle;
-    private String colonia;
-    private String ciudad;
-    private String estado;
+    private ArrayList<String> datos_cliente = new ArrayList<>(8);
 
-    public String getId_cliente() {
-        return id_cliente;
+    public ModelClientes(BaseDatos base_datos) {
+        this.base_datos = base_datos;
+
     }
 
-    public String getNombre() {
-        return nombre;
+    public ArrayList<String> getDatos_cliente() {
+        return datos_cliente;
     }
 
-    public String getApell_pat() {
-        return apell_pat;
-    }
-
-    public String getApell_mat() {
-        return apell_mat;
-    }
-
-    public String getCalle() {
-        return calle;
-    }
-
-    public String getColonia() {
-        return colonia;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setId_cliente(String id_cliente) {
-        this.id_cliente = id_cliente;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setApell_pat(String apell_pat) {
-        this.apell_pat = apell_pat;
-    }
-
-    public void setApell_mat(String apell_mat) {
-        this.apell_mat = apell_mat;
-    }
-
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
-
-    public void setColonia(String colonia) {
-        this.colonia = colonia;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setDatos_cliente(ArrayList<String> datos_cliente) {
+        this.datos_cliente = datos_cliente;
     }
 
     public void conectar() {
         base_datos.conectar();
+        base_datos.vaciarArreglos();
+        base_datos.setTabla("cliente");
+        base_datos.verColumnas();
+        for (int i = 0; i < 8; i++) {
+            datos_cliente.add(i, " ");
+        }
     }
 
     public void llenarValores() {
+
         try {
-            setId_cliente(base_datos.getRs().getString("id_cliente"));
-            setNombre(base_datos.getRs().getString("nombre"));
-            setApell_pat(base_datos.getRs().getString("apell_pat"));
-            setApell_mat(base_datos.getRs().getString("apell_mat"));
-            setCalle(base_datos.getRs().getString("calle"));
-            setColonia(base_datos.getRs().getString("colonia "));
-            setCiudad(base_datos.getRs().getString("ciudad"));
-            setEstado(base_datos.getRs().getString("estado"));
+            for (int i=0;i<datos_cliente.size();i++){
+                datos_cliente.set(i, base_datos.getRs().getString(i+1));
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(ModelClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     public void moverPrimero() {
         base_datos.moverPrimero();
-        llenarValores();
+       llenarValores();
     }
 
-     public void moverUltimo() {
+    public void moverUltimo() {
         base_datos.moverUltimo();
         llenarValores();
     }
 
     public void moverSiguiente() {
         base_datos.moverSiguiente();
-        llenarValores();
+       llenarValores();
     }
 
     public void moverAnterior() {
@@ -128,22 +72,28 @@ public class ModelClientes {
     }
 
     public void seleccionarTodos() {
-
-    }
-
-    public void mostrarTodos() {
-
+        base_datos.seleccionarTodos();
+        base_datos.moverPrimero();
     }
 
     public void insertar() {
-
+        base_datos.setDatos(datos_cliente);
+        base_datos.insertar();
+        moverPrimero();
+      
     }
 
-    public void borrar(int id_pelicula) {
-
+    public void borrar() {
+        base_datos.setDatos(datos_cliente);
+        base_datos.eliminar();
+        moverPrimero();
+     
     }
 
     public void actualizar() {
-
+        base_datos.setDatos(datos_cliente);
+        base_datos.modificar();
+        moverPrimero();   
     }
+    
 }

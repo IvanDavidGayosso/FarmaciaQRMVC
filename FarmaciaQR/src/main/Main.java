@@ -5,17 +5,39 @@
  */
 package main;
 
-/**
- *
- * @author ivan97
- */
+import models.*;
+import views.*;
+import controllers.*;
+
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        BaseDatos base_datos = new BaseDatos();
+
+        ModelEmpleados model_empleados = new ModelEmpleados(base_datos);
+        ViewEmpleado view_empleados = new ViewEmpleado();
+
+        ModelClientes model_clientes = new ModelClientes(base_datos);
+        ViewCliente view_cliente = new ViewCliente();
+
+        ModelPrincipal model_principal = new ModelPrincipal();
+        ViewPrincipal view_principal = new ViewPrincipal();
+
+        Object models[] = new Object[3];
+        Object views[] = new Object[3];
+
+        models[0] = model_principal;
+        models[1] = model_clientes;
+        models[2] = model_empleados;
+
+        views[0] = view_principal;
+        views[1] = view_cliente;
+        views[2] = view_empleados;
+
+        ControllerEmpleados controller_empleados = new ControllerEmpleados(models, views);
+        ControllerClientes controller_clientes = new ControllerClientes(models, views);
+        ControllerPrincipal controller_principal = new ControllerPrincipal(models, views);
+
     }
-    
+
 }

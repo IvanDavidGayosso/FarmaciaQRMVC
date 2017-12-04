@@ -53,7 +53,7 @@ public class BaseDatos {
     public void conectar() {
         try {
             //conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/acme_mvc", "postgres", "1234");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost/acme_mvc", "root", "12345678");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost/farmacia", "root", "12345678");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 101");
@@ -97,9 +97,10 @@ public class BaseDatos {
         }
     }
 
-    public void seleccionarTodos(String tabla) {
+    public void seleccionarTodos() {
 
         try {
+
             sql = "select * from " + tabla + ";";
             ps = conexion.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -113,14 +114,20 @@ public class BaseDatos {
     public void seleccionar(String user, String pass) {
 
         try {
-            sql = "select * from usuarios where user=" + user + " and password=" + pass + ";";
+            //admin' or '1'='1
+            sql = "select rol from usuarios where user = ? and password = MD5(?);";
             ps = conexion.prepareStatement(sql);
+            ps.setString(1, datos.get(0));
+            ps.setString(2, datos.get(1));
             rs = ps.executeQuery();
+            datos.set(0, " ");
+            while (rs.next()) {
+                datos.set(0, rs.getString("rol"));
+            }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 106 " + ex + "");
         }
-
     }
 
     public void insertar() {
@@ -138,6 +145,7 @@ public class BaseDatos {
                 }
             }
             sql = sql + columnas + " values " + datos;
+
             ps = conexion.prepareStatement(sql);
             for (int i = 1; i < tipo_dato.size(); i++) {
                 if (tipo_dato.get(i).equals("varchar")) {
@@ -147,19 +155,17 @@ public class BaseDatos {
                 }
             }
             ps.executeUpdate();
-            moverPrimero();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 108 " + ex + "");
         }
     }
 
-    public void eliminar(String columna, String clave) {
+    public void eliminar() {
         try {
-            sql = "DELETE FROM " + tabla + " WHERE " + columna + "=?;";
+            sql = "DELETE FROM " + tabla + " WHERE " + columnas.get(0) + "=?;";
             ps = conexion.prepareStatement(sql);
-            ps.setString(1, clave);
+            ps.setString(1, datos.get(0));
             ps.executeUpdate();
-            moverPrimero();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 107 " + ex + "");
         }
@@ -167,20 +173,26 @@ public class BaseDatos {
 
     public void verColumnas() {
         try {
-            String tipo_dato = "";
             int con = 0;
-            sql = "describe " + getTabla() + ";";
+            String tipo_dato = "";
+            sql = "describe " + tabla + ";";
             ps = conexion.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 this.columnas.add(con, rs.getString(1));
                 for (int i = 0; i < rs.getString(2).length(); i++) {
                     if ('(' == rs.getString(2).charAt(i)) {
-                        this.tipo_dato.add(con, rs.getString(2).substring(0, i));
+                        break;
                     }
+                    tipo_dato = tipo_dato + rs.getString(2).charAt(i);
+                    System.out.println(tipo_dato);
+
                 }
+                this.tipo_dato.add(tipo_dato);
+                tipo_dato = "";
                 con += 1;
             }
+            System.out.println(this.tipo_dato);
         } catch (SQLException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -188,6 +200,7 @@ public class BaseDatos {
 
     public void modificar() {
         try {
+
             String auxilar_id = "", auxiliar_dato = "";
             for (int i = 0; i < this.tipo_dato.size(); i++) {
                 if (i == 0) {
@@ -230,23 +243,55 @@ public class BaseDatos {
                     ps.setInt(i + 1, Integer.parseInt(this.datos.get(i)));
                 }
             }
-            
+
             for (int i = this.tipo_dato.size() - 1; i >= 0; i--) {
                 if (i == tipo_dato.size() - 1) {
                     auxilar_id = this.tipo_dato.get(i);
+                    auxiliar_dato = this.datos.get(i);
                 }
                 if (0 == i) {
                     this.tipo_dato.set(i, auxilar_id);
+                    this.datos.set(i, auxiliar_dato);
                 } else {
                     this.tipo_dato.set(i, this.tipo_dato.get(i - 1));
+                    this.datos.set(i, this.datos.get(i - 1));
                 }
 
             }
             ps.executeUpdate();
-            moverPrimero();
         } catch (SQLException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void vaciarArreglos() {
+        columnas.removeAll(columnas);
+        datos.removeAll(datos);
+        tipo_dato.removeAll(tipo_dato);
+    }
+
+    private String getCifrado(String texto, String hashType) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance(hashType);
+            byte[] array = md.digest(texto.getBytes());
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+            System.err.println("Error " + e.getMessage());
+        }
+        return "";
+    }
+
+    public String md5(String texto) {
+        return getCifrado(texto, "MD5");
+    }
+
+    public String sha1(String texto) {
+        return getCifrado(texto, "SHA1");
     }
 
 }

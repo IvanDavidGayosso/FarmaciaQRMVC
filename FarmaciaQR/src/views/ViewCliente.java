@@ -45,8 +45,6 @@ public class ViewCliente extends javax.swing.JPanel {
         jtf_colonia = new javax.swing.JTextField();
         jtf_ciudad = new javax.swing.JTextField();
         jtf_estado = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jb_primero = new javax.swing.JButton();
         jb_anterior = new javax.swing.JButton();
         jb_siguiente = new javax.swing.JButton();
@@ -98,24 +96,11 @@ public class ViewCliente extends javax.swing.JPanel {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Estado");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "id_cliente", "nombre", "apellido paterno", "apellido materno", "calle", "colonia", "ciudad", "estado"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         jb_primero.setText("<");
 
         jb_anterior.setText("<<");
 
-        jb_siguiente.setText("<<");
+        jb_siguiente.setText(">>");
 
         jb_ultimo.setText(">");
 
@@ -144,10 +129,6 @@ public class ViewCliente extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(159, 159, 159)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +234,6 @@ public class ViewCliente extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jtf_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel9)
@@ -264,9 +244,7 @@ public class ViewCliente extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jbtn_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(383, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -297,8 +275,6 @@ public class ViewCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     public javax.swing.JButton jb_anterior;
     public javax.swing.JButton jb_primero;
     public javax.swing.JButton jb_siguiente;
@@ -311,13 +287,13 @@ public class ViewCliente extends javax.swing.JPanel {
     public javax.swing.JButton jbtn_nuevo;
     public javax.swing.JButton jbtn_regresar;
     public javax.swing.JButton jbtn_usuario;
-    private javax.swing.JTextField jtf_apell_mat;
-    private javax.swing.JTextField jtf_apell_pat;
-    private javax.swing.JTextField jtf_calle;
-    private javax.swing.JTextField jtf_ciudad;
-    private javax.swing.JTextField jtf_colonia;
-    private javax.swing.JTextField jtf_estado;
-    private javax.swing.JTextField jtf_id_cliente;
-    private javax.swing.JTextField jtf_nombre;
+    public javax.swing.JTextField jtf_apell_mat;
+    public javax.swing.JTextField jtf_apell_pat;
+    public javax.swing.JTextField jtf_calle;
+    public javax.swing.JTextField jtf_ciudad;
+    public javax.swing.JTextField jtf_colonia;
+    public javax.swing.JTextField jtf_estado;
+    public javax.swing.JTextField jtf_id_cliente;
+    public javax.swing.JTextField jtf_nombre;
     // End of variables declaration//GEN-END:variables
 }

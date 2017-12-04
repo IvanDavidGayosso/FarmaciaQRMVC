@@ -5,171 +5,98 @@
  */
 package models;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ivan97
  */
 public class ModelEmpleados {
 
-    private int id_empleado;
-    private String nombre;
-    private String apell_pat;
-    private String apell_mat;
-    private String calle;
-    private String colonia;
-    private String ciudad;
-    private String estado;
-    private String telefono;
-    private boolean status;
-    private String fe_ingreso;
-    private String fe_egreso;
-    private int id_cargo;
+    BaseDatos base_datos;
+    private ArrayList<String> datos_cliente = new ArrayList<>(13);
 
-    public int getId_empleado() {
-        return id_empleado;
+    public ModelEmpleados(BaseDatos base_datos) {
+        this.base_datos = base_datos;
+
     }
 
-    public void setId_empleado(int id_empleado) {
-        this.id_empleado = id_empleado;
+    public ArrayList<String> getDatos_cliente() {
+        return datos_cliente;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setDatos_cliente(ArrayList<String> datos_cliente) {
+        this.datos_cliente = datos_cliente;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApell_pat() {
-        return apell_pat;
-    }
-
-    public void setApell_pat(String apell_pat) {
-        this.apell_pat = apell_pat;
-    }
-
-    public String getApell_mat() {
-        return apell_mat;
-    }
-
-    public void setApell_mat(String apell_mat) {
-        this.apell_mat = apell_mat;
-    }
-
-    public String getCalle() {
-        return calle;
-    }
-
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
-
-    public String getColonia() {
-        return colonia;
-    }
-
-    public void setColonia(String colonia) {
-        this.colonia = colonia;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getFe_ingreso() {
-        return fe_ingreso;
-    }
-
-    public void setFe_ingreso(String fe_ingreso) {
-        this.fe_ingreso = fe_ingreso;
-    }
-
-    public String getFe_egreso() {
-        return fe_egreso;
-    }
-
-    public void setFe_egreso(String fe_egreso) {
-        this.fe_egreso = fe_egreso;
-    }
-
-    public int getId_cargo() {
-        return id_cargo;
-    }
-
-    public void setId_cargo(int id_cargo) {
-        this.id_cargo = id_cargo;
-    }
-    
     public void conectar() {
-
+        base_datos.conectar();
+         base_datos.vaciarArreglos();
+        base_datos.setTabla("empleados");
+        base_datos.verColumnas();
+        for (int i = 0; i < 13; i++) {
+            datos_cliente.add(i, " ");
+        }
     }
 
     public void llenarValores() {
 
+        try {
+            for (int i = 0; i < datos_cliente.size(); i++) {
+                datos_cliente.set(i, base_datos.getRs().getString(i + 1));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ModelClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public void moverPrimero() {
-
+        base_datos.moverPrimero();
+        llenarValores();
     }
 
     public void moverUltimo() {
-
+        base_datos.moverUltimo();
+        llenarValores();
     }
 
     public void moverSiguiente() {
-
+        base_datos.moverSiguiente();
+        llenarValores();
     }
 
     public void moverAnterior() {
-
+        base_datos.moverAnterior();
+        llenarValores();
     }
 
     public void seleccionarTodos() {
-
-    }
-
-    public void mostrarTodos() {
-
+        base_datos.seleccionarTodos();
+        base_datos.moverPrimero();
     }
 
     public void insertar() {
+        base_datos.setDatos(datos_cliente);
+        base_datos.insertar();
+        moverPrimero();
 
     }
 
-    public void borrar(int id_pelicula) {
+    public void borrar() {
+        base_datos.setDatos(datos_cliente);
+        base_datos.eliminar();
+        moverPrimero();
 
     }
 
     public void actualizar() {
-
+        base_datos.setDatos(datos_cliente);
+        base_datos.modificar();
+        moverPrimero();
     }
 }
