@@ -6,6 +6,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import views.ViewCliente;
 import models.ModelClientes;
 
@@ -26,6 +27,7 @@ public class ControllerClientes {
         view_clientes.jbtn_eliminar.addActionListener(e -> jb_eliminar());
         view_clientes.jbtn_modificar.addActionListener(e -> jb_modificar());
         view_clientes.jbtn_nuevo.addActionListener(e -> jb_nuevo());
+        view_clientes.jbtn_buscar.addActionListener(e -> jbtn_buscar());
         initView();
 
     }
@@ -103,8 +105,8 @@ public class ControllerClientes {
         getValores();
     }
 
-    private void initView() {
-        
+    public void initView() {
+
         model_clientes.conectar();
         model_clientes.seleccionarTodos();
         model_clientes.llenarValores();
@@ -121,6 +123,23 @@ public class ControllerClientes {
         view_clientes.jtf_colonia.setText(" ");
         view_clientes.jtf_ciudad.setText(" ");
         view_clientes.jtf_estado.setText(" ");
+    }
+
+    public void jbtn_buscar() {
+        datos_cliente.removeAll(datos_cliente);
+        datos_cliente.add(0, view_clientes.jtf_nombre.getText());
+        datos_cliente.add(1, view_clientes.jtf_apell_pat.getText());
+        datos_cliente.add(2, view_clientes.jtf_apell_mat.getText());
+        model_clientes.setDatos_cliente(datos_cliente);
+        model_clientes.buscar();
+        System.out.println(model_clientes.getResultado());
+        if (model_clientes.getResultado()==null) {
+            JOptionPane.showMessageDialog(view_clientes, "No encontrado");
+        } else {
+            JOptionPane.showMessageDialog(view_clientes, model_clientes.getResultado());
+        }
+        initView();
+
     }
 
 }

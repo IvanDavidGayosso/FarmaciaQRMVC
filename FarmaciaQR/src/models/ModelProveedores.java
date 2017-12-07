@@ -10,43 +10,50 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ModelClientes {
+public class ModelProveedores {
 
     BaseDatos base_datos;
-    private ArrayList<String> datos_cliente = new ArrayList<>(8);
-    String resultado = "";
-    public String getResultado() {
-        return resultado;
-    }
-    
-    public ModelClientes(BaseDatos base_datos) {
+    private ArrayList<String> datos_proveedor = new ArrayList<>(7);
+
+    public ModelProveedores(BaseDatos base_datos) {
         this.base_datos = base_datos;
 
     }
 
-    public ArrayList<String> getDatos_cliente() {
-        return datos_cliente;
+    public ArrayList<String> getDatos_proveedor() {
+        return datos_proveedor;
     }
 
-    public void setDatos_cliente(ArrayList<String> datos_cliente) {
-        this.datos_cliente = datos_cliente;
+    public void setDatos_proveedor(ArrayList<String> datos_proveedor) {
+        this.datos_proveedor = datos_proveedor;
+    }
+
+    public ArrayList<String> getDatos_cliente() {
+        return getDatos_proveedor();
+    }
+
+    public void setDatos_cliente(ArrayList<String> datos_proveedor) {
+        this.setDatos_proveedor(datos_proveedor);
     }
 
     public void conectar() {
         base_datos.conectar();
+        
+    }
+    public void preparar_db(){
         base_datos.vaciarArreglos();
-        base_datos.setTabla("clientes");
+        base_datos.setTabla("proveedores" );
         base_datos.verColumnas();
-        for (int i = 0; i < 8; i++) {
-            datos_cliente.add(i, " ");
+        for (int i = 0; i < 7; i++) {
+                datos_proveedor.add(i, " ");
         }
     }
 
     public void llenarValores() {
 
         try {
-            for (int i = 0; i < 8; i++) {
-                datos_cliente.set(i, base_datos.getRs().getString(i + 1));
+            for (int i=0;i<7;i++){
+                getDatos_proveedor().set(i, base_datos.getRs().getString(i+1));
             }
 
         } catch (SQLException ex) {
@@ -57,7 +64,7 @@ public class ModelClientes {
 
     public void moverPrimero() {
         base_datos.moverPrimero();
-        llenarValores();
+       llenarValores();
     }
 
     public void moverUltimo() {
@@ -67,7 +74,7 @@ public class ModelClientes {
 
     public void moverSiguiente() {
         base_datos.moverSiguiente();
-        llenarValores();
+       llenarValores();
     }
 
     public void moverAnterior() {
@@ -76,35 +83,28 @@ public class ModelClientes {
     }
 
     public void seleccionarTodos() {
-        base_datos.seleccionarTodos();
+        base_datos.seleccionarTodos( );
         base_datos.moverPrimero();
     }
 
     public void insertar() {
-        base_datos.setDatos(datos_cliente);
-        base_datos.insertar_procedimiento();
+        base_datos.setDatos(getDatos_proveedor());
+        base_datos.insertar();
         moverPrimero();
-
+      
     }
 
     public void borrar() {
-        base_datos.setDatos(datos_cliente);
-        base_datos.eliminar_procedimientos();
+        base_datos.setDatos(getDatos_proveedor());
+        base_datos.eliminar( );
         moverPrimero();
-
+     
     }
 
     public void actualizar() {
-        base_datos.setDatos(datos_cliente);
-        base_datos.modificar_procediemiento();
-        base_datos.seleccionarTodos();
-        moverPrimero();
+        base_datos.setDatos(getDatos_proveedor());
+        base_datos.modificar( );
+        moverPrimero();   
     }
-
-    public void buscar() {
-        resultado=" ";
-        base_datos.setDatos(datos_cliente);
-        resultado = base_datos.seleccionar_procedimiento();
-    }
-
+    
 }

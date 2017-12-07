@@ -17,36 +17,52 @@ import java.util.logging.Logger;
 public class ModelEmpleados {
 
     BaseDatos base_datos;
-    private ArrayList<String> datos_cliente = new ArrayList<>(13);
+    private ArrayList<String> datos_empleado = new ArrayList<>(10);
+    private ArrayList<String> id_cargo = new ArrayList<>(); 
+    private ArrayList<String> cargo = new ArrayList<>();
+
+    public ArrayList<String> getId_cargo() {
+        return id_cargo;
+    }
+
+
+    public ArrayList<String> getCargo() {
+        return cargo;
+    }
+    
 
     public ModelEmpleados(BaseDatos base_datos) {
+        
         this.base_datos = base_datos;
 
     }
 
-    public ArrayList<String> getDatos_cliente() {
-        return datos_cliente;
+    public ArrayList<String> getDatos_empleado() {
+        return datos_empleado;
     }
 
-    public void setDatos_cliente(ArrayList<String> datos_cliente) {
-        this.datos_cliente = datos_cliente;
+    public void setDatos_empleado(ArrayList<String> datos_empleado) {
+        this.datos_empleado = datos_empleado;
     }
 
     public void conectar() {
         base_datos.conectar();
-         base_datos.vaciarArreglos();
-        base_datos.setTabla("empleados");
+        
+    }
+    public void preparar_db(){
+        base_datos.vaciarArreglos();
+        base_datos.setTabla("empleado_datos_completos");
         base_datos.verColumnas();
-        for (int i = 0; i < 13; i++) {
-            datos_cliente.add(i, " ");
+        for (int i = 0; i < 10; i++) {
+            datos_empleado.add(i, " ");
         }
     }
-
+    
     public void llenarValores() {
 
         try {
-            for (int i = 0; i < datos_cliente.size(); i++) {
-                datos_cliente.set(i, base_datos.getRs().getString(i + 1));
+            for (int i = 0; i < 10; i++) {
+                datos_empleado.set(i, base_datos.getRs().getString(i + 1));
             }
 
         } catch (SQLException ex) {
@@ -81,22 +97,40 @@ public class ModelEmpleados {
     }
 
     public void insertar() {
-        base_datos.setDatos(datos_cliente);
-        base_datos.insertar();
+        base_datos.setDatos(datos_empleado);
+        base_datos.insertar("empleados");
         moverPrimero();
 
     }
 
     public void borrar() {
-        base_datos.setDatos(datos_cliente);
-        base_datos.eliminar();
+        base_datos.setDatos(datos_empleado);
+        base_datos.eliminar( );
         moverPrimero();
 
     }
 
     public void actualizar() {
-        base_datos.setDatos(datos_cliente);
-        base_datos.modificar();
+        base_datos.setDatos(datos_empleado);
+        base_datos.modificar( );
         moverPrimero();
     }
+    
+    public void llenar_combo(){
+        try {
+            id_cargo.removeAll(id_cargo);
+            cargo.removeAll(cargo);
+            base_datos.setTabla("cargos");
+            base_datos.seleccionarTodos();
+            while(base_datos.getRs().next()){
+                id_cargo.add(base_datos.getRs().getString("id_cargo"));
+                cargo.add(base_datos.getRs().getString("cargo"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModelEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+   
+  
 }

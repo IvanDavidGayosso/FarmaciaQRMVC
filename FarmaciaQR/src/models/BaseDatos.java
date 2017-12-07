@@ -5,11 +5,13 @@
  */
 package models;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +31,8 @@ public class BaseDatos {
     private ResultSet rs;
     private PreparedStatement ps;
     private String sql;
+    CallableStatement pro;
+   
 
     public String getTabla() {
         return tabla;
@@ -104,7 +108,7 @@ public class BaseDatos {
             sql = "select * from " + tabla + ";";
             ps = conexion.prepareStatement(sql);
             rs = ps.executeQuery();
-
+           
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 106 " + ex + "");
         }
@@ -132,7 +136,7 @@ public class BaseDatos {
 
     public void insertar() {
         try {
-            sql = "INSERT INTO " + getTabla();//" (" + columnas + ") =?) VALUES (" + datos + ");";
+            sql = "INSERT INTO " + tabla;//" (" + columnas + ") =?) VALUES (" + datos + ");";
             String columnas = "(";
             String datos = "(";
             for (int i = 1; i < this.columnas.size(); i++) {
@@ -157,6 +161,36 @@ public class BaseDatos {
             ps.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 108 " + ex + "");
+        }
+    }
+
+    public void insertar(String tabla) {
+        try {
+            sql = "INSERT INTO " + tabla;//" (" + columnas + ") =?) VALUES (" + datos + ");";
+            String columnas = "(";
+            String datos = "(";
+            for (int i = 1; i < this.columnas.size(); i++) {
+                if (i == this.columnas.size() - 1) {
+                    columnas = columnas + this.columnas.get(i) + ") ";
+                    datos = datos + "?); ";
+                } else {
+                    columnas = columnas + this.columnas.get(i) + ", ";
+                    datos = datos + "? , ";
+                }
+            }
+            sql = sql + columnas + " values " + datos;
+            System.out.println(sql);
+            ps = conexion.prepareStatement(sql);
+            for (int i = 1; i < tipo_dato.size(); i++) {
+                if (tipo_dato.get(i).equals("varchar")) {
+                    ps.setString(i, this.datos.get(i));
+                } else if (tipo_dato.get(i).equals("int") || tipo_dato.get(i).equals("tinyint")) {
+                    ps.setInt(i, Integer.parseInt(this.datos.get(i)));
+                }
+            }
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error 109 " + ex + "");
         }
     }
 
@@ -185,14 +219,12 @@ public class BaseDatos {
                         break;
                     }
                     tipo_dato = tipo_dato + rs.getString(2).charAt(i);
-                    System.out.println(tipo_dato);
 
                 }
                 this.tipo_dato.add(tipo_dato);
                 tipo_dato = "";
                 con += 1;
             }
-            System.out.println(this.tipo_dato);
         } catch (SQLException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -217,7 +249,7 @@ public class BaseDatos {
 
             }
 
-            sql = "UPDATE " + getTabla() + " SET ";//" (" + columnas + ") =?) VALUES (" + datos + ");";
+            sql = "UPDATE " + tabla + " SET ";//" (" + columnas + ") =?) VALUES (" + datos + ");";
             String columnas = "";
             String condicion = "";
             for (int i = 0; i < this.columnas.size(); i++) {
@@ -264,6 +296,17 @@ public class BaseDatos {
         }
     }
 
+    public void eliminar_procedimientos() {
+        try {
+            String proceso = "CALL delCliente(?)";
+            pro = conexion.prepareCall(proceso);   
+                pro.setString(1, datos.get(0)); 
+            pro.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void vaciarArreglos() {
         columnas.removeAll(columnas);
         datos.removeAll(datos);
@@ -292,6 +335,51 @@ public class BaseDatos {
 
     public String sha1(String texto) {
         return getCifrado(texto, "SHA1");
+    }
+
+    public void insertar_procedimiento() {
+        try {
+            String proceso = "CALL insCliente(?,?,?,?,?,?,?)";
+            pro = conexion.prepareCall(proceso);
+            for (int i = 1; i < datos.size(); i++) {
+                pro.setString(i, datos.get(i));
+            }
+            pro.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void modificar_procediemiento() {
+        try {
+
+            String proceso = "CALL updCliente(?,?,?,?,?,?,?,?)";
+            pro = conexion.prepareCall(proceso);
+            for (int i = 0; i < datos.size(); i++) {
+                pro.setString(i + 1, datos.get(i));
+            }
+            pro.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     public String  seleccionar_procedimiento(){
+         String resultado= " ";
+        try {
+                String proceso = "CALL selCliente(?,?,?,?)";
+                pro = conexion.prepareCall(proceso);
+                pro.setString(1, datos.get(0));
+                pro.setString(2, datos.get(1));
+                pro.setString(3, datos.get(2));
+                pro.registerOutParameter("resultado", Types.VARCHAR);
+                pro.execute();
+                resultado = pro.getString("resultado");
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
     }
 
 }
