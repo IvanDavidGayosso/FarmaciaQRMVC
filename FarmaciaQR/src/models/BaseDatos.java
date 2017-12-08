@@ -115,20 +115,22 @@ public class BaseDatos {
 
     }
 
-    public void seleccionar(String user, String pass) {
+    public void seleccionar() {
 
         try {
             //admin' or '1'='1
-            sql = "select rol from usuarios where user = ? and password = MD5(?);";
+            sql = "select * from usuario_empleado where usuario = ? and contrasena = MD5(?);";
             ps = conexion.prepareStatement(sql);
             ps.setString(1, datos.get(0));
             ps.setString(2, datos.get(1));
             rs = ps.executeQuery();
             datos.set(0, " ");
+            datos.set(1, " ");
             while (rs.next()) {
-                datos.set(0, rs.getString("rol"));
+                datos.set(0, rs.getString("id_empleado"));
+                datos.set(1,rs.getString("cargo"));
             }
-
+ 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 106 " + ex + "");
         }

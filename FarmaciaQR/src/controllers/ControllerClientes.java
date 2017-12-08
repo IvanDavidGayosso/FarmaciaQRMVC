@@ -17,8 +17,8 @@ public class ControllerClientes {
     ArrayList<String> datos_cliente = new ArrayList<>(8);
 
     public ControllerClientes(Object[] models, Object[] views) {
-        this.model_clientes = (ModelClientes) models[1];
-        this.view_clientes = (ViewCliente) views[1];
+        this.model_clientes = (ModelClientes) models[2];
+        this.view_clientes = (ViewCliente) views[2];
         view_clientes.jb_primero.addActionListener(e -> jb_moverPrimer());
         view_clientes.jb_siguiente.addActionListener(e -> jb_moverSiguiente());
         view_clientes.jb_anterior.addActionListener(e -> jb_moverAnterior());

@@ -89,22 +89,20 @@ public class ModelClientes {
 
     public void borrar() {
         base_datos.setDatos(datos_cliente);
-        base_datos.eliminar_procedimientos();
+        base_datos.eliminar();
         moverPrimero();
 
     }
 
     public void actualizar() {
         base_datos.setDatos(datos_cliente);
-        base_datos.modificar_procediemiento();
+        base_datos.modificar();
         base_datos.seleccionarTodos();
         moverPrimero();
     }
 
     public void buscar() {
-        resultado=" ";
-        base_datos.setDatos(datos_cliente);
-        resultado = base_datos.seleccionar_procedimiento();
+       
     }
 
 }

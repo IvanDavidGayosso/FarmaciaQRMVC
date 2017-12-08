@@ -16,8 +16,8 @@ public class ControllerProveedores {
     ArrayList<String> datos_proveedor = new ArrayList<>(8);
 
     public ControllerProveedores(Object[] models, Object[] views) {
-        this.model_proveedores = (ModelProveedores) models[3];
-        this.view_proveedores = (ViewProveedores) views[3];
+        this.model_proveedores = (ModelProveedores) models[4];
+        this.view_proveedores = (ViewProveedores) views[4];
         view_proveedores.jbtn_primero.addActionListener(e -> jb_moverPrimer());
         view_proveedores.jbtn_siguiente.addActionListener(e -> jb_moverSiguiente());
         view_proveedores.jbtn_anterior.addActionListener(e -> jb_moverAnterior());

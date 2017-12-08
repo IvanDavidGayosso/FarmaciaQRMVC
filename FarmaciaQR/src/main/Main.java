@@ -22,31 +22,38 @@ public class Main {
 
         ModelClientes model_clientes = new ModelClientes(base_datos);
         ViewCliente view_cliente = new ViewCliente();
-
+        
+        ModelLogin model_login = new ModelLogin(base_datos);
+        ViewLogin view_login = new ViewLogin();
+    
         ModelPrincipal model_principal = new ModelPrincipal();
         ViewPrincipal view_principal = new ViewPrincipal();
 
-        Object models[] = new Object[4];
-        Object views[] = new Object[4];
-        Object controllers[] = new Object[4];
+        Object models[] = new Object[5];
+        Object views[] = new Object[5];
+        Object controllers[] = new Object[5];
 
         models[0] = model_principal;
-        models[1] = model_clientes;
-        models[2] = model_empleados;
-        models[3] = model_proveedores;
+        models[1] = model_login;
+        models[2] = model_clientes;
+        models[3] = model_empleados;
+        models[4] = model_proveedores;
 
         views[0] = view_principal;
-        views[1] = view_cliente;
-        views[2] = view_empleados;
-        views[3] = view_proveedores;
+        views[1] = view_login;
+        views[2] = view_cliente;
+        views[3] = view_empleados;
+        views[4] = view_proveedores;
 
         ControllerProveedores controller_proveedores = new ControllerProveedores(models, views);
+        ControllerLogin controller_login = new ControllerLogin(models, views);
         ControllerEmpleados controller_empleados = new ControllerEmpleados(models, views);
         ControllerClientes controller_clientes = new ControllerClientes(models, views);
         
-        controllers[1] = controller_clientes;
-        controllers[2] = controller_empleados;
-        controllers[3] = controller_proveedores;
+        controllers[1] = controller_login;
+        controllers[2] = controller_clientes;
+        controllers[3] = controller_empleados;
+        controllers[4] = controller_proveedores;
 
         ControllerPrincipal controller_principal = new ControllerPrincipal(models, views, controllers);
 

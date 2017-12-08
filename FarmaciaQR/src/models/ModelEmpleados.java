@@ -18,18 +18,6 @@ public class ModelEmpleados {
 
     BaseDatos base_datos;
     private ArrayList<String> datos_empleado = new ArrayList<>(10);
-    private ArrayList<String> id_cargo = new ArrayList<>(); 
-    private ArrayList<String> cargo = new ArrayList<>();
-
-    public ArrayList<String> getId_cargo() {
-        return id_cargo;
-    }
-
-
-    public ArrayList<String> getCargo() {
-        return cargo;
-    }
-    
 
     public ModelEmpleados(BaseDatos base_datos) {
         
@@ -115,22 +103,5 @@ public class ModelEmpleados {
         base_datos.modificar( );
         moverPrimero();
     }
-    
-    public void llenar_combo(){
-        try {
-            id_cargo.removeAll(id_cargo);
-            cargo.removeAll(cargo);
-            base_datos.setTabla("cargos");
-            base_datos.seleccionarTodos();
-            while(base_datos.getRs().next()){
-                id_cargo.add(base_datos.getRs().getString("id_cargo"));
-                cargo.add(base_datos.getRs().getString("cargo"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ModelEmpleados.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-   
   
 }
