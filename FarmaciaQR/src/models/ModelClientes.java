@@ -82,7 +82,7 @@ public class ModelClientes {
 
     public void insertar() {
         base_datos.setDatos(datos_cliente);
-        base_datos.insertar_procedimiento();
+        base_datos.insertar();
         moverPrimero();
 
     }

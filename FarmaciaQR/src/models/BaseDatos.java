@@ -166,36 +166,7 @@ public class BaseDatos {
         }
     }
 
-    public void insertar(String tabla) {
-        try {
-            sql = "INSERT INTO " + tabla;//" (" + columnas + ") =?) VALUES (" + datos + ");";
-            String columnas = "(";
-            String datos = "(";
-            for (int i = 1; i < this.columnas.size(); i++) {
-                if (i == this.columnas.size() - 1) {
-                    columnas = columnas + this.columnas.get(i) + ") ";
-                    datos = datos + "?); ";
-                } else {
-                    columnas = columnas + this.columnas.get(i) + ", ";
-                    datos = datos + "? , ";
-                }
-            }
-            sql = sql + columnas + " values " + datos;
-            System.out.println(sql);
-            ps = conexion.prepareStatement(sql);
-            for (int i = 1; i < tipo_dato.size(); i++) {
-                if (tipo_dato.get(i).equals("varchar")) {
-                    ps.setString(i, this.datos.get(i));
-                } else if (tipo_dato.get(i).equals("int") || tipo_dato.get(i).equals("tinyint")) {
-                    ps.setInt(i, Integer.parseInt(this.datos.get(i)));
-                }
-            }
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error 109 " + ex + "");
-        }
-    }
-
+   
     public void eliminar() {
         try {
             sql = "DELETE FROM " + tabla + " WHERE " + columnas.get(0) + "=?;";

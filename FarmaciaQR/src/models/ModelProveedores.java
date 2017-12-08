@@ -88,21 +88,21 @@ public class ModelProveedores {
     }
 
     public void insertar() {
-        base_datos.setDatos(getDatos_proveedor());
+        base_datos.setDatos(datos_proveedor);
         base_datos.insertar();
         moverPrimero();
       
     }
 
     public void borrar() {
-        base_datos.setDatos(getDatos_proveedor());
+        base_datos.setDatos(datos_proveedor);
         base_datos.eliminar( );
         moverPrimero();
      
     }
 
     public void actualizar() {
-        base_datos.setDatos(getDatos_proveedor());
+        base_datos.setDatos(datos_proveedor);
         base_datos.modificar( );
         moverPrimero();   
     }

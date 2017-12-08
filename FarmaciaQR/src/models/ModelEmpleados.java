@@ -86,7 +86,7 @@ public class ModelEmpleados {
 
     public void insertar() {
         base_datos.setDatos(datos_empleado);
-        base_datos.insertar("empleados");
+        base_datos.insertar();
         moverPrimero();
 
     }
