@@ -28,60 +28,62 @@ public class ViewLogin extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jbtn_entrar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jtf_usuario = new javax.swing.JTextField();
         jpf_contrasena = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jtf_usuario1 = new javax.swing.JTextField();
+        jbtn_entrar1 = new javax.swing.JButton();
+        jpf_contrasena1 = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel_fondo = new javax.swing.JLabel();
 
         jLabel1.setText("Usuario:");
 
-        jLabel2.setText("Contraseña:");
-
         jbtn_entrar.setText("Entrar");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtf_usuario)
-                            .addComponent(jpf_contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jbtn_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jpf_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(jbtn_entrar)
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
+        jLabel2.setText("Contraseña:");
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 200, 260));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Contraseña:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
+        add(jtf_usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 140, -1));
+
+        jbtn_entrar1.setText("Entrar");
+        add(jbtn_entrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+        add(jpf_contrasena1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 140, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Usuario:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
+
+        jLabel_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dark_blue_wallpaper_by_malkowitch-d6iuhnh.jpg"))); // NOI18N
+        add(jLabel_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 476));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel_fondo;
     public javax.swing.JButton jbtn_entrar;
+    public javax.swing.JButton jbtn_entrar1;
     public javax.swing.JPasswordField jpf_contrasena;
+    public javax.swing.JPasswordField jpf_contrasena1;
     public javax.swing.JTextField jtf_usuario;
+    public javax.swing.JTextField jtf_usuario1;
     // End of variables declaration//GEN-END:variables
 }

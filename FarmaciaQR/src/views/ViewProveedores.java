@@ -27,50 +27,78 @@ public class ViewProveedores extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jtf_proveedor = new javax.swing.JTextField();
-        jtf_correo_electronico = new javax.swing.JTextField();
-        jtf_calle = new javax.swing.JTextField();
-        jtf_colonia = new javax.swing.JTextField();
-        jtf_ciudad = new javax.swing.JTextField();
-        jtf_estado = new javax.swing.JTextField();
-        jtf_rfc = new javax.swing.JTextField();
-        jbtn_nuevo = new javax.swing.JButton();
-        jbtn_agregar = new javax.swing.JButton();
-        jbtn_modificar = new javax.swing.JButton();
-        jbtn_eliminar = new javax.swing.JButton();
-        jbtn_buscar = new javax.swing.JButton();
-        jbtn_actualizar = new javax.swing.JButton();
-        jbtn_primero = new javax.swing.JButton();
-        jbtn_anterior = new javax.swing.JButton();
         jbtn_siguiente = new javax.swing.JButton();
+        jtf_estado = new javax.swing.JTextField();
         jbtn_ultimo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jtf_rfc = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jbtn_nuevo = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jbtn_agregar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jbtn_modificar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jbtn_eliminar = new javax.swing.JButton();
+        jtf_proveedor = new javax.swing.JTextField();
+        jbtn_buscar = new javax.swing.JButton();
+        jtf_correo_electronico = new javax.swing.JTextField();
+        jbtn_actualizar = new javax.swing.JButton();
+        jtf_calle = new javax.swing.JTextField();
+        jbtn_primero = new javax.swing.JButton();
+        jtf_colonia = new javax.swing.JTextField();
+        jbtn_anterior = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jtf_ciudad = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jbtn_siguiente1 = new javax.swing.JButton();
+        jtf_estado1 = new javax.swing.JTextField();
+        jbtn_ultimo1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jtf_rfc1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jbtn_nuevo1 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jbtn_agregar1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jbtn_modificar1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jbtn_eliminar1 = new javax.swing.JButton();
+        jtf_proveedor1 = new javax.swing.JTextField();
+        jbtn_buscar1 = new javax.swing.JButton();
+        jtf_correo_electronico1 = new javax.swing.JTextField();
+        jbtn_actualizar1 = new javax.swing.JButton();
+        jtf_calle1 = new javax.swing.JTextField();
+        jbtn_anterior1 = new javax.swing.JButton();
+        jtf_ciudad1 = new javax.swing.JTextField();
+        jbtn_primero1 = new javax.swing.JButton();
+        jtf_colonia1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jbtn_usuario = new javax.swing.JButton();
+        jbtn_regresar = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel8_fondo = new javax.swing.JLabel();
 
-        jLabel1.setText("RFC:");
+        jbtn_siguiente.setText(">>");
 
-        jLabel2.setText("Proveedor:");
+        jbtn_ultimo.setText(">");
 
         jLabel3.setText("Correo:");
 
         jLabel4.setText("Calle:");
 
-        jLabel5.setText("Colonia:");
-
-        jLabel6.setText("Ciudad:");
-
-        jLabel7.setText("Estado:");
-
         jbtn_nuevo.setText("Nuevo");
+
+        jLabel5.setText("Colonia:");
 
         jbtn_agregar.setText("Agregar");
 
+        jLabel6.setText("Ciudad:");
+
         jbtn_modificar.setText("Modificar");
+
+        jLabel7.setText("Estado:");
 
         jbtn_eliminar.setText("Eliminar");
 
@@ -82,140 +110,170 @@ public class ViewProveedores extends javax.swing.JPanel {
 
         jbtn_anterior.setText("<<");
 
-        jbtn_siguiente.setText(">>");
+        jLabel1.setText("RFC:");
 
-        jbtn_ultimo.setText(">");
+        jLabel2.setText("Proveedor:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtf_rfc, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                    .addComponent(jtf_proveedor)
-                    .addComponent(jtf_correo_electronico)
-                    .addComponent(jtf_calle)
-                    .addComponent(jtf_colonia)
-                    .addComponent(jtf_ciudad)
-                    .addComponent(jtf_estado))
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jbtn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtn_nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtn_agregar)
-                            .addComponent(jbtn_eliminar)
-                            .addComponent(jbtn_actualizar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jbtn_primero)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtn_anterior)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtn_siguiente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtn_ultimo)))
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtf_rfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jtf_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jtf_correo_electronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jtf_calle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jtf_colonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jtf_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbtn_primero)
-                            .addComponent(jbtn_anterior)
-                            .addComponent(jbtn_siguiente)
-                            .addComponent(jbtn_ultimo))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jbtn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(96, 96, 96))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jbtn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jbtn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jbtn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jtf_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
-        );
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbtn_siguiente1.setText(">>");
+        add(jbtn_siguiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, -1, -1));
+        add(jtf_estado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 180, -1));
+
+        jbtn_ultimo1.setText(">");
+        add(jbtn_ultimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 100, 50, -1));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Correo:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+        add(jtf_rfc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 180, -1));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Calle:");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 40, 20));
+
+        jbtn_nuevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.png"))); // NOI18N
+        jbtn_nuevo1.setText("Nuevo");
+        add(jbtn_nuevo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 110, -1));
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Colonia:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+
+        jbtn_agregar1.setIcon(new javax.swing.ImageIcon("C:\\Users\\equipo hp\\Downloads\\users_add2.png")); // NOI18N
+        jbtn_agregar1.setText("Agregar");
+        add(jbtn_agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 110, 40));
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Ciudad:");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
+
+        jbtn_modificar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
+        jbtn_modificar1.setText("Modificar");
+        add(jbtn_modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, 50));
+
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Estado:");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 60, -1));
+
+        jbtn_eliminar1.setIcon(new javax.swing.ImageIcon("C:\\Users\\equipo hp\\Downloads\\trashcan_delete.png")); // NOI18N
+        jbtn_eliminar1.setText("Eliminar");
+        add(jbtn_eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 110, 40));
+        add(jtf_proveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 180, -1));
+
+        jbtn_buscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jbtn_buscar1.setText("Buscar");
+        add(jbtn_buscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 110, 50));
+        add(jtf_correo_electronico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 180, -1));
+
+        jbtn_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        jbtn_actualizar1.setText("Actualizar");
+        add(jbtn_actualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 110, 40));
+        add(jtf_calle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 180, -1));
+
+        jbtn_anterior1.setText("<<");
+        add(jbtn_anterior1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
+        add(jtf_ciudad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 180, -1));
+
+        jbtn_primero1.setText("<");
+        add(jbtn_primero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 50, -1));
+
+        jtf_colonia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_colonia1ActionPerformed(evt);
+            }
+        });
+        add(jtf_colonia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 180, -1));
+
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Proveedor:");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 80, 30));
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("RFC:");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
+
+        jbtn_usuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\equipo hp\\Downloads\\user_group.png")); // NOI18N
+        jbtn_usuario.setText("Usuario");
+        add(jbtn_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 110, 40));
+
+        jbtn_regresar.setIcon(new javax.swing.ImageIcon("C:\\Users\\equipo hp\\Downloads\\undo.png")); // NOI18N
+        jbtn_regresar.setText("Regresar");
+        add(jbtn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 110, 40));
+
+        jLabel15.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("PROVEEDORES");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+
+        jLabel8_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dark_blue_wallpaper_by_malkowitch-d6iuhnh.jpg"))); // NOI18N
+        add(jLabel8_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 510));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtf_colonia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_colonia1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_colonia1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel8_fondo;
+    private javax.swing.JLabel jLabel9;
     public javax.swing.JButton jbtn_actualizar;
+    public javax.swing.JButton jbtn_actualizar1;
     public javax.swing.JButton jbtn_agregar;
+    public javax.swing.JButton jbtn_agregar1;
     public javax.swing.JButton jbtn_anterior;
+    public javax.swing.JButton jbtn_anterior1;
     public javax.swing.JButton jbtn_buscar;
+    public javax.swing.JButton jbtn_buscar1;
     public javax.swing.JButton jbtn_eliminar;
+    public javax.swing.JButton jbtn_eliminar1;
     public javax.swing.JButton jbtn_modificar;
+    public javax.swing.JButton jbtn_modificar1;
     public javax.swing.JButton jbtn_nuevo;
+    public javax.swing.JButton jbtn_nuevo1;
     public javax.swing.JButton jbtn_primero;
+    public javax.swing.JButton jbtn_primero1;
+    public javax.swing.JButton jbtn_regresar;
     public javax.swing.JButton jbtn_siguiente;
+    public javax.swing.JButton jbtn_siguiente1;
     public javax.swing.JButton jbtn_ultimo;
+    public javax.swing.JButton jbtn_ultimo1;
+    public javax.swing.JButton jbtn_usuario;
     public transient javax.swing.JTextField jtf_calle;
+    public transient javax.swing.JTextField jtf_calle1;
     public transient javax.swing.JTextField jtf_ciudad;
+    public transient javax.swing.JTextField jtf_ciudad1;
     public transient javax.swing.JTextField jtf_colonia;
+    public transient javax.swing.JTextField jtf_colonia1;
     public transient javax.swing.JTextField jtf_correo_electronico;
+    public transient javax.swing.JTextField jtf_correo_electronico1;
     public transient javax.swing.JTextField jtf_estado;
+    public transient javax.swing.JTextField jtf_estado1;
     public transient javax.swing.JTextField jtf_proveedor;
+    public transient javax.swing.JTextField jtf_proveedor1;
     public transient javax.swing.JTextField jtf_rfc;
+    public transient javax.swing.JTextField jtf_rfc1;
     // End of variables declaration//GEN-END:variables
 }
