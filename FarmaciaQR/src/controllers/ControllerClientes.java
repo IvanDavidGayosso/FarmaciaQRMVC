@@ -19,10 +19,10 @@ public class ControllerClientes {
     public ControllerClientes(Object[] models, Object[] views) {
         this.model_clientes = (ModelClientes) models[2];
         this.view_clientes = (ViewCliente) views[2];
-        view_clientes.jb_primero.addActionListener(e -> jb_moverPrimer());
-        view_clientes.jb_siguiente.addActionListener(e -> jb_moverSiguiente());
-        view_clientes.jb_anterior.addActionListener(e -> jb_moverAnterior());
-        view_clientes.jb_ultimo.addActionListener(e -> jb_moverUltimo());
+        view_clientes.jbtn_primero.addActionListener(e -> jb_moverPrimer());
+        view_clientes.jbtn_siguiente.addActionListener(e -> jb_moverSiguiente());
+        view_clientes.jbtn_anterior.addActionListener(e -> jb_moverAnterior());
+        view_clientes.jbtn_ultimo.addActionListener(e -> jb_moverUltimo());
         view_clientes.jbtn_agregar.addActionListener(e -> jb_agregar());
         view_clientes.jbtn_eliminar.addActionListener(e -> jb_eliminar());
         view_clientes.jbtn_modificar.addActionListener(e -> jb_modificar());

@@ -21,7 +21,7 @@ public class Main {
         ViewProveedores view_proveedores = new ViewProveedores();
 
         ModelEmpleados model_empleados = new ModelEmpleados(base_datos);
-        ViewEmpleados view_empleados = new ViewEmpleados();
+        View_Empleado view_empleados = new View_Empleado();
 
         ModelClientes model_clientes = new ModelClientes(base_datos);
         ViewCliente view_cliente = new ViewCliente();

@@ -5,10 +5,9 @@
  */
 package models;
 
-import java.sql.SQLException;
+
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class ModelLogin {
 
@@ -41,7 +40,7 @@ public class ModelLogin {
     public void seleccionarTodos() {
         base_datos.setDatos(datos_usuario);
         base_datos.seleccionar();
-        datos_usuario=base_datos.getDatos();
+        datos_usuario = base_datos.getDatos();
     }
 
 }

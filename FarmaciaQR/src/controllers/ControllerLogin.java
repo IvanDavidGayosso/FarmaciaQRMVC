@@ -19,30 +19,29 @@ public class ControllerLogin {
     public ControllerLogin(Object[] models, Object[] views) {
         this.model_login = (ModelLogin) models[1];
         this.view_login = (ViewLogin) views[1];
-        //view_login.jbtn_entrar.addActionListener(e -> jbtn_entrar());
         initView();
 
     }
 
-  
     public void initView() {
-      model_login.conectar();
-        
+        model_login.conectar();
+
     }
 
     public boolean jbtn_entrar() {
         datos_usuario.removeAll(datos_usuario);
-        datos_usuario.add(0,view_login.jtf_usuario.getText());
-        datos_usuario.add(1,view_login.jpf_contrasena.getText());
-       model_login.setDatos_usuario(datos_usuario);
-       model_login.seleccionarTodos();
-       if(!model_login.getDatos_usuario().get(1).equals(" ")){
-           JOptionPane.showMessageDialog(view_login, "Bienvenido");
-           return true;
-       }else{
-           JOptionPane.showMessageDialog(view_login, "No se encontro en el sistema");
-       }
-       return false;
+        datos_usuario.add(0, view_login.jtf_usuario.getText());
+        datos_usuario.add(1, view_login.jpf_contrasena.getText());
+        model_login.setDatos_usuario(datos_usuario);
+        model_login.seleccionarTodos();
+        System.out.println(model_login.getDatos_usuario().get(1));
+        if (!model_login.getDatos_usuario().get(1).equals(" ")) {
+            JOptionPane.showMessageDialog(view_login, "No se encontro en el sistema");
+        } else {
+            JOptionPane.showMessageDialog(view_login, "Bienvenido");
+            return true;
+        }
+        return false;
     }
 
 }

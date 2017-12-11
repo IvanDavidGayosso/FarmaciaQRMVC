@@ -13,7 +13,7 @@ public class ControllerPrincipal {
 
     ViewMedicamentos view_medicamentos;
     ViewProveedores view_proveedores;
-    ViewEmpleados view_empleado;
+    View_Empleado view_empleado;
     ViewCliente view_clientes;
     ViewLogin view_login;
     ModelPrincipal model_principal;
@@ -27,7 +27,7 @@ public class ControllerPrincipal {
     public ControllerPrincipal(Object[] models, Object[] views, Object[] controllers) {
         this.view_login=(ViewLogin) views[1];
         this.view_clientes = (ViewCliente) views[2];
-        this.view_empleado = (ViewEmpleados) views[3];
+        this.view_empleado = (View_Empleado) views[3];
         this.view_proveedores = (ViewProveedores) views[4];
         this.view_medicamentos= (ViewMedicamentos) views[5];
         this.controller_login=(ControllerLogin) controllers[1]; 
@@ -88,10 +88,9 @@ public class ControllerPrincipal {
     }
 
     private void principal() {
-        if(controller_login.jbtn_entrar()==true){
-          view_login.setVisible(false);  
-        }
-       
+        System.out.println("Hola");
+  
+   
     }
 
 }

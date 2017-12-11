@@ -6,19 +6,19 @@
 package controllers;
 
 import java.util.ArrayList;
-import views.ViewEmpleados;
+import views.View_Empleado;
 import models.ModelEmpleados;
 
 public class ControllerEmpleados {
  
     ModelEmpleados model_empleado;
-    ViewEmpleados view_empleado;
+    View_Empleado view_empleado;
     ArrayList<String> datos_empleado = new ArrayList<>(10);
   
     
     public ControllerEmpleados(Object[] models, Object[] views) {
         this.model_empleado = (ModelEmpleados) models[3];
-        this.view_empleado = (ViewEmpleados) views[3];
+        this.view_empleado = (View_Empleado) views[3];
         view_empleado.jbtn_primero.addActionListener(e -> jb_moverPrimer());
         view_empleado.jbtn_siguiente.addActionListener(e -> jb_moverSiguiente());
         view_empleado.jbtn_anterior.addActionListener(e -> jb_moverAnterior());
