@@ -32,7 +32,6 @@ public class BaseDatos {
     private PreparedStatement ps;
     private String sql;
     CallableStatement pro;
-   
 
     public String getTabla() {
         return tabla;
@@ -108,7 +107,7 @@ public class BaseDatos {
             sql = "select * from " + tabla + ";";
             ps = conexion.prepareStatement(sql);
             rs = ps.executeQuery();
-           
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 106 " + ex + "");
         }
@@ -128,9 +127,9 @@ public class BaseDatos {
             datos.set(1, " ");
             while (rs.next()) {
                 datos.set(0, rs.getString("id_empleado"));
-                datos.set(1,rs.getString("cargo"));
+                datos.set(1, rs.getString("cargo"));
             }
- 
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error 106 " + ex + "");
         }
@@ -138,6 +137,7 @@ public class BaseDatos {
 
     public void insertar() {
         try {
+            System.out.println(datos + " " + tipo_dato);
             sql = "INSERT INTO " + tabla;//" (" + columnas + ") =?) VALUES (" + datos + ");";
             String columnas = "(";
             String datos = "(";
@@ -154,10 +154,14 @@ public class BaseDatos {
 
             ps = conexion.prepareStatement(sql);
             for (int i = 1; i < tipo_dato.size(); i++) {
-                if (tipo_dato.get(i).equals("varchar")) {
+                if (tipo_dato.get(i).equals("varchar") || tipo_dato.get(i).equals("text")) {
                     ps.setString(i, this.datos.get(i));
                 } else if (tipo_dato.get(i).equals("int")) {
                     ps.setInt(i, Integer.parseInt(this.datos.get(i)));
+                } else if (tipo_dato.get(i).equals("smallint") || tipo_dato.get(i).equals("tinyint")) {
+                    ps.setShort(i, Short.parseShort(this.datos.get(i)));
+                } else if (tipo_dato.get(i).equals("float")) {
+                    ps.setFloat(i, Float.parseFloat(this.datos.get(i)));
                 }
             }
             ps.executeUpdate();
@@ -166,7 +170,6 @@ public class BaseDatos {
         }
     }
 
-   
     public void eliminar() {
         try {
             sql = "DELETE FROM " + tabla + " WHERE " + columnas.get(0) + "=?;";
@@ -236,16 +239,16 @@ public class BaseDatos {
                 }
             }
             sql = sql + columnas + " where " + condicion;
-
             ps = conexion.prepareStatement(sql);
             for (int i = 0; i < tipo_dato.size(); i++) {
-
-                if (tipo_dato.get(i).equals("varchar")) {
-
-                    ps.setString(i + 1, this.datos.get(i));
-
+                if (tipo_dato.get(i).equals("varchar") || tipo_dato.get(i).equals("text")) {
+                    ps.setString(i+1, this.datos.get(i));
                 } else if (tipo_dato.get(i).equals("int")) {
-                    ps.setInt(i + 1, Integer.parseInt(this.datos.get(i)));
+                    ps.setInt(i+1, Integer.parseInt(this.datos.get(i)));
+                } else if (tipo_dato.get(i).equals("smallint") || tipo_dato.get(i).equals("tinyint")) {
+                    ps.setShort(i+1, Short.parseShort(this.datos.get(i)));
+                } else if (tipo_dato.get(i).equals("float")) {
+                    ps.setFloat(i+1, Float.parseFloat(this.datos.get(i)));
                 }
             }
 
@@ -272,8 +275,8 @@ public class BaseDatos {
     public void eliminar_procedimientos() {
         try {
             String proceso = "CALL delCliente(?)";
-            pro = conexion.prepareCall(proceso);   
-                pro.setString(1, datos.get(0)); 
+            pro = conexion.prepareCall(proceso);
+            pro.setString(1, datos.get(0));
             pro.execute();
         } catch (SQLException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -337,22 +340,36 @@ public class BaseDatos {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     public String  seleccionar_procedimiento(){
-         String resultado= " ";
+
+    public String seleccionar_procedimiento() {
+        String resultado = " ";
         try {
-                String proceso = "CALL selCliente(?,?,?,?)";
-                pro = conexion.prepareCall(proceso);
-                pro.setString(1, datos.get(0));
-                pro.setString(2, datos.get(1));
-                pro.setString(3, datos.get(2));
-                pro.registerOutParameter("resultado", Types.VARCHAR);
-                pro.execute();
-                resultado = pro.getString("resultado");
+            String proceso = "CALL selCliente(?,?,?,?)";
+            pro = conexion.prepareCall(proceso);
+            pro.setString(1, datos.get(0));
+            pro.setString(2, datos.get(1));
+            pro.setString(3, datos.get(2));
+            pro.registerOutParameter("resultado", Types.VARCHAR);
+            pro.execute();
+            resultado = pro.getString("resultado");
         } catch (SQLException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
+    }
+    
+    public ResultSet seleccionarVista(String tabla) {
+        ResultSet resultado_vista = null;
+        try {
+            
+            sql = "select * from " + tabla + ";";
+            ps = conexion.prepareStatement(sql);
+            resultado_vista = ps.executeQuery();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error 106 " + ex + "");
+        }
+        return resultado_vista;
     }
 
 }

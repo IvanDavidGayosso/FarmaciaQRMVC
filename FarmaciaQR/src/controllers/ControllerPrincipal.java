@@ -5,11 +5,13 @@
  */
 package controllers;
 
+import ds.desktop.notify.DesktopNotify;
 import views.*;
 import models.*;
 
 public class ControllerPrincipal {
 
+    ViewMedicamentos view_medicamentos;
     ViewProveedores view_proveedores;
     ViewEmpleados view_empleado;
     ViewCliente view_clientes;
@@ -20,22 +22,26 @@ public class ControllerPrincipal {
     ControllerClientes controller_clientes;
     ControllerEmpleados controller_empleados;
     ControllerProveedores controller_proveedores;
+    ControllerMedicamentos controller_medicamentos;
 
     public ControllerPrincipal(Object[] models, Object[] views, Object[] controllers) {
         this.view_login=(ViewLogin) views[1];
         this.view_clientes = (ViewCliente) views[2];
         this.view_empleado = (ViewEmpleados) views[3];
         this.view_proveedores = (ViewProveedores) views[4];
+        this.view_medicamentos= (ViewMedicamentos) views[5];
         this.controller_login=(ControllerLogin) controllers[1]; 
         this.controller_clientes = (ControllerClientes) controllers[2];
         this.controller_empleados = (ControllerEmpleados) controllers[3];
         this.controller_proveedores = (ControllerProveedores) controllers[4];
+        this.controller_medicamentos = (ControllerMedicamentos) controllers[5];
         this.model_principal = (ModelPrincipal) models[0];
         this.view_principal = (ViewPrincipal) views[0];
         this.view_principal.jmi_clientes.addActionListener(e -> jmi_clientes());
         this.view_principal.jmi_empleado.addActionListener(e -> jmi_empleados());
         this.view_principal.jmi_proveedores.addActionListener(e -> jmi_proveedores());
         this.view_principal.jmi_salir.addActionListener(e -> jbtn_salir());
+        this.view_principal.jmi_medicamentos.addActionListener(e -> jmi_medicamentos());
         this.view_login.jbtn_entrar.addActionListener(e -> principal());
         initView();
     }
@@ -45,6 +51,7 @@ public class ControllerPrincipal {
         view_principal.setContentPane(view_login);
         view_principal.revalidate();
         view_principal.repaint();
+        
        
     }
 
@@ -69,6 +76,13 @@ public class ControllerPrincipal {
         controller_proveedores.initView();
     }
 
+    private void jmi_medicamentos() {
+        view_principal.setContentPane(view_medicamentos);
+        view_principal.revalidate();
+        view_principal.repaint();
+        controller_medicamentos.initView();
+    }
+    
     public void jbtn_salir() {
         System.exit(0);
     }
