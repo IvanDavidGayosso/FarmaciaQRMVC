@@ -17,6 +17,7 @@ public class ControllerEmpleados {
   
     
     public ControllerEmpleados(Object[] models, Object[] views) {
+        
         this.model_empleado = (ModelEmpleados) models[3];
         this.view_empleado = (View_Empleado) views[3];
         view_empleado.jbtn_primero.addActionListener(e -> jb_moverPrimer());
@@ -27,6 +28,7 @@ public class ControllerEmpleados {
         view_empleado.jbtn_eliminar.addActionListener(e -> jb_eliminar());
         view_empleado.jbtn_modificar.addActionListener(e -> jb_modificar());
         view_empleado.jbtn_nuevo.addActionListener(e -> jbtn_nuevo());
+    
         initView();
 
     }
@@ -126,4 +128,7 @@ public class ControllerEmpleados {
         view_empleado.jtf_estado.setText(" ");
         view_empleado.jtf_telefono.setText(" ");
     }
+
+    
+    
 }

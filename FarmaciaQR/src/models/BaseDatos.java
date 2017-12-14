@@ -135,9 +135,9 @@ public class BaseDatos {
         }
     }
 
+    
     public void insertar() {
         try {
-            System.out.println(datos + " " + tipo_dato);
             sql = "INSERT INTO " + tabla;//" (" + columnas + ") =?) VALUES (" + datos + ");";
             String columnas = "(";
             String datos = "(";
@@ -151,7 +151,7 @@ public class BaseDatos {
                 }
             }
             sql = sql + columnas + " values " + datos;
-
+            System.out.println(sql);
             ps = conexion.prepareStatement(sql);
             for (int i = 1; i < tipo_dato.size(); i++) {
                 if (tipo_dato.get(i).equals("varchar") || tipo_dato.get(i).equals("text")) {
@@ -169,7 +169,39 @@ public class BaseDatos {
             JOptionPane.showMessageDialog(null, "Error 108 " + ex + "");
         }
     }
-
+public void insertar_usuario() {
+        try {
+            sql = "INSERT INTO " + tabla;//" (" + columnas + ") =?) VALUES (" + datos + ");";
+            String columnas = "(";
+            String datos = "(";
+            for (int i = 0; i < this.columnas.size(); i++) {
+                if (i == this.columnas.size() - 1) {
+                    columnas = columnas + this.columnas.get(i) + ") ";
+                    datos = datos + "?); ";
+                } else {
+                    columnas = columnas + this.columnas.get(i) + ", ";
+                    datos = datos + "? , ";
+                }
+            }
+            sql = sql + columnas + " values " + datos;
+            System.out.println(sql);
+            ps = conexion.prepareStatement(sql);
+            for (int i = 0; i < tipo_dato.size(); i++) {
+                if (tipo_dato.get(i).equals("varchar") || tipo_dato.get(i).equals("text")) {
+                    ps.setString(i+1, this.datos.get(i));
+                } else if (tipo_dato.get(i).equals("int")) {
+                    ps.setInt(i+1, Integer.parseInt(this.datos.get(i)));
+                } else if (tipo_dato.get(i).equals("smallint") || tipo_dato.get(i).equals("tinyint")) {
+                    ps.setShort(i+1, Short.parseShort(this.datos.get(i)));
+                } else if (tipo_dato.get(i).equals("float")) {
+                    ps.setFloat(i+1, Float.parseFloat(this.datos.get(i)));
+                }
+            }
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error 108 " + ex + "");
+        }
+    }
     public void eliminar() {
         try {
             sql = "DELETE FROM " + tabla + " WHERE " + columnas.get(0) + "=?;";

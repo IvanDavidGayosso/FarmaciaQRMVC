@@ -9,6 +9,6 @@ package models;
  *
  * @author ivan97
  */
-public class ModelPrincipal {
+public class ModelPrincipalMDI {
     
 }

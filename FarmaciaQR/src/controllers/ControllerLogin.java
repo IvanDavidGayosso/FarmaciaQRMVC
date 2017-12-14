@@ -19,6 +19,7 @@ public class ControllerLogin {
     public ControllerLogin(Object[] models, Object[] views) {
         this.model_login = (ModelLogin) models[1];
         this.view_login = (ViewLogin) views[1];
+        view_login.jbtn_entrar.addActionListener(e->jbtn_entrar());
         initView();
 
     }
